@@ -56,6 +56,8 @@ class Quicksort{
     public static void main(String[] args) {
         int [] arr={3,6,1,8,10,9,5};
         int n=arr.length; 
+        System.out.println("Array before sorting: ");
+        printArray(arr);
         quickSort(arr,0,n-1);
         printArray(arr);
     }
