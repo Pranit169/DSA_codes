@@ -58,6 +58,7 @@ class Quicksort{
         int n=arr.length; 
         System.out.println("Array before sorting: ");
         printArray(arr);
+        System.out.println("Array after sorting: ");
         quickSort(arr,0,n-1);
         printArray(arr);
     }
