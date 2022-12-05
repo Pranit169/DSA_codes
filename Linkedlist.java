@@ -1,4 +1,4 @@
- class Linkedlist {
+class Linkedlist {
 	Node head;
 
 	class Node {
@@ -9,7 +9,6 @@
 			this.data = data;
 			this.next = null;
 		}
-
 	}
 
 	public void addAtPosition(String data, int position) {
@@ -57,20 +56,18 @@
 	}
 
 	public void deletion(int position) {
-        Node temp=head;    
-		if (position ==0) {
-				head=temp.next;
-				return;
-			}
-		int count=0;
-		while (count<position-1) {
-			temp=temp.next;
+		Node temp = head;
+		if (position == 0) {
+			head = temp.next;
+			return;
+		}
+		int count = 0;
+		while (count < position - 1) {
+			temp = temp.next;
 			count++;
 		}
-		Node newNode=temp.next.next;
-		temp.next=newNode;
-
-
+		Node newNode = temp.next.next;
+		temp.next = newNode;
 
 	}
 
