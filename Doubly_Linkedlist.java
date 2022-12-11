@@ -32,6 +32,8 @@ class Doubly_Linkedlist {
         }
         newNode.next=temp.next;
         temp.next=newNode;
+        newNode=temp.next.prev;
+        
     }
 
     public void addFirst(String data) {
@@ -41,7 +43,7 @@ class Doubly_Linkedlist {
             return;
         }
         newNode.next = head;
-        // head.prev = newNode;
+         head.prev = newNode;
         head = newNode;
     }
 
@@ -56,7 +58,7 @@ class Doubly_Linkedlist {
             temp = temp.next;
         }
         temp.next = newNode;
-        // newNode.prev = temp;
+         newNode.prev = temp;
 
     }
 
