@@ -10,7 +10,10 @@ class Linkedlist {
 			this.next = null;
 		}
 	}
+public void atanyposition(){
+	System.out.println("HI");
 
+}
 	public void addAtPosition(String data, int position) {
 		if (position == 1) {
 			addFirst(data);
