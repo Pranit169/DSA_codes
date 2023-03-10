@@ -1,7 +1,7 @@
 class Linkedlist {
 	Node head;
 
-	class Node {
+	private class Node {
 		String data;
 		Node next;
 
@@ -9,11 +9,6 @@ class Linkedlist {
 			this.data = data;
 			this.next = null;
 		}
-	}
-
-	public void atanyposition() {
-		System.out.println("HI");
-
 	}
 
 	public void addAtPosition(String data, int position) {
