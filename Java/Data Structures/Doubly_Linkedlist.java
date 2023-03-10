@@ -22,7 +22,7 @@ public class Doubly_Linkedlist {
     public void insertFirst(int data) {
         Node newNode = new Node(data);
         newNode.next = head;
-        newNode.prev = null;
+        
         if (head != null) {
             head.prev = newNode;
         }
