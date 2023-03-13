@@ -5,7 +5,7 @@ struct Node
     int data;
     struct Node *next;
 };
-struct Node *head;
+struct Node *head=NULL;
 void atFirst();
 void atLast();
 void atPosition();
@@ -64,20 +64,16 @@ void print()
 void atFirst()
 {
     struct Node *newNode = (struct Node *)malloc(sizeof(struct Node));
-    int n;
     printf("Enter data: ");
-    scanf("%d", &n);
-    newNode->data = n;
+    scanf("%d", &newNode->data);
     newNode->next = head;
     head = newNode;
 }
 void atLast()
 {
     struct Node *newNode = (struct Node *)malloc(sizeof(struct Node));
-    int n;
     printf("Enter data: ");
-    scanf("%d", &n);
-    newNode->data = n;
+    scanf("%d", &newNode->data);
     if (head == NULL)
     {
         newNode->next = NULL;
@@ -95,10 +91,10 @@ void atLast()
 }
 void atPosition()
 {
-    int n, pos;
+    int pos;
     printf("Enter the position and data: ");
-    scanf("%d %d", &pos, &n);
     struct Node *newNode = (struct Node *)malloc(sizeof(struct Node));
+    scanf("%d %d", &pos, &newNode->data);
     struct Node *temp = head;
     int count = 0;
     while (count < pos - 1)
@@ -106,7 +102,6 @@ void atPosition()
         temp = temp->next;
         count++;
     }
-    newNode->data = n;
     newNode->next = temp->next;
     temp->next = newNode;
 }
