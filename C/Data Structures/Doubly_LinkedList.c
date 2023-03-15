@@ -124,7 +124,7 @@ void search()
     {
         if (temp->data == el)
         {
-            printf("The element is found at index %d\n", pos);
+            printf("The element is found at address %p\n",temp);
             break;
             return;
         }
