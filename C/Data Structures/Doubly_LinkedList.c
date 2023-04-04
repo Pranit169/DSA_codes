@@ -103,7 +103,7 @@ void delAtPos()
     printf("Enter the position: ");
     scanf("%d", &pos);
 
-    while (count < pos - 1)
+    while (count < pos -1)
     {
         temp1 = temp1->next;
         temp2 = temp2->next;
@@ -125,7 +125,6 @@ void search()
         if (temp->data == el)
         {
             printf("The element is found at address %p\n",temp);
-            break;
             return;
         }
         temp = temp->next;
