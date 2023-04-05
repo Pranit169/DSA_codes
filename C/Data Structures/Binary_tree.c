@@ -1,5 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+int max(int num1, int num2){
+    return (num1>num2) ? num1:num2;
+}
 struct Node
 {
     int data;
@@ -54,6 +57,13 @@ void inOrder(struct Node *root)
         inOrder(root->right);
     }
 }
+int height(struct Node *root){
+    if (root == NULL)
+    {
+        return 0;
+    }
+    return max(height(root->left),height(root->right))+1; 
+}
 int main()
 {
     struct Node *root = createNode();
@@ -63,4 +73,6 @@ int main()
     printf("\n");
     inOrder(root);
     printf("\n");
+    int h=height(root);
+    printf("The height of the tree is %d\n",h);
 }
