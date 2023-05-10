@@ -6,7 +6,7 @@ struct Node
     struct Node *left, *right;
 };
 
-struct Node *create(int data)
+struct Node *createNode(int data)
 {
     struct Node *newNode = malloc(sizeof(struct Node));
     newNode->data = data;
@@ -14,49 +14,100 @@ struct Node *create(int data)
     newNode->right = NULL;
     return newNode;
 }
-struct Node *insert(struct Node *node)
+struct Node *insert(struct Node *node, int el)
 {
-    int el;
-    printf("Enter the data: ");
-    scanf("%d", &el);
     if (node == NULL)
-        return create(el);
+        return createNode(el);
     if (node->data < el)
     {
-        node->right = insert(node->right);
+        node->right = insert(node->right, el);
     }
     else
     {
-        node->left = insert(node->left);
+        node->left = insert(node->left, el);
     }
     return node;
 }
-struct Node *search(struct Node *node)
+struct Node *delete(struct Node *node, int data)
 {
-    int el;
-    printf("Enter the element: ");
-    scanf("%d", &el);
-    if ( node ==NULL|| node->data == el)
+    if (node == NULL)
+        return node;
+
+    if (node->data > data)
+    {
+        node->left = delete (node->left, data);
+    }
+    else if (node->data < data)
+    {
+        node->right = delete (node->right, data);
+    }
+    else
+    {
+        if (node->left == NULL)
+        {
+            struct Node *temp = node->right;
+            free(node);
+            return temp;
+        }
+        else if (node->right == NULL)
+        {
+            struct Node *temp = node->left;
+            free(node);
+            return temp;
+        }
+
+        struct Node *temp = node->right;
+        while (temp && temp->left != NULL)
+        {
+            temp = temp->left;
+        }
+        node->data = temp->data;
+        node->right = delete (node->right, data);
+    }
+    return node;
+}
+struct Node *search(struct Node *node, int el)
+{
+    if (node == NULL || node->data == el)
         return node;
 
     if (node->data < el)
     {
-        return search(node->right);
+        return search(node->right, el);
     }
-    return search(node->left);
+    else
+    {
+        return search(node->left, el);
+    }
 }
-void inOrder(struct Node *root){
-    if (root!=NULL)
+void inOrder(struct Node *root)
+{
+    if (root != NULL)
     {
         inOrder(root->left);
-        printf("%d ",root->data);
+        printf("%d ", root->data);
         inOrder(root->right);
-    }   
+    }
 }
-int main(){
-      struct Node *root=insert(root);
-      insert(root);
-      insert(root);
-      insert(root);
-      inOrder(root);
+int main()
+{
+    struct Node *root = NULL;
+    root = insert(root, 5);
+    insert(root, 6);
+    insert(root, 3);
+    insert(root, 1);
+    insert(root, 4);
+
+    inOrder(root);
+    printf("\n");
+    // if (search(root, 2) != NULL)
+    // {
+    //     printf("\nThe element is present in the tree");
+    // }
+    // else
+    // {
+    //     printf("\nThe element is not present in the tree");
+    // }
+    root = delete (root, 3);
+    inOrder(root);
 }
