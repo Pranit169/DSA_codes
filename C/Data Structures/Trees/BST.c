@@ -97,17 +97,21 @@ int main()
     insert(root, 3);
     insert(root, 1);
     insert(root, 4);
-
+    printf("Inorder traversel: ");
     inOrder(root);
     printf("\n");
-    // if (search(root, 2) != NULL)
-    // {
-    //     printf("\nThe element is present in the tree");
-    // }
-    // else
-    // {
-    //     printf("\nThe element is not present in the tree");
-    // }
-    root = delete (root, 3);
+    if (search(root, 5) != NULL)
+    {
+        printf("The element is present in the tree\n");
+    }
+    else
+    {
+        printf("\nThe element is not present in the tree\n");
+    }
+    printf("Before deletion: ");
+    inOrder(root);
+
+    root = delete (root, 4);
+    printf("\nAfter deletion: ");
     inOrder(root);
 }
