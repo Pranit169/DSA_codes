@@ -5,7 +5,6 @@ struct Node
     int data;
     struct Node *left, *right;
 };
-
 struct Node *createNode(int data)
 {
     struct Node *newNode = malloc(sizeof(struct Node));
@@ -100,6 +99,7 @@ int main()
     printf("Inorder traversel: ");
     inOrder(root);
     printf("\n");
+    printf("Is 5 present in the tree or not: \n");
     if (search(root, 5) != NULL)
     {
         printf("The element is present in the tree\n");
@@ -110,7 +110,6 @@ int main()
     }
     printf("Before deletion: ");
     inOrder(root);
-
     root = delete (root, 4);
     printf("\nAfter deletion: ");
     inOrder(root);
