@@ -30,7 +30,14 @@ struct Node *insert(struct Node *node, int el)
 struct Node *delete(struct Node *node, int data)
 {
     if (node == NULL)
-        return node;
+    {
+        return NULL;
+    }
+    if (node->left == NULL && node->right == NULL)
+    {
+        free(node);
+        return NULL;
+    }
 
     if (node->data > data)
     {
@@ -42,21 +49,9 @@ struct Node *delete(struct Node *node, int data)
     }
     else
     {
-        if (node->left == NULL)
-        {
-            struct Node *temp = node->right;
-            free(node);
-            return temp;
-        }
-        else if (node->right == NULL)
-        {
-            struct Node *temp = node->left;
-            free(node);
-            return temp;
-        }
 
         struct Node *temp = node->right;
-        while (temp && temp->left != NULL)
+        while (temp->left != NULL)
         {
             temp = temp->left;
         }

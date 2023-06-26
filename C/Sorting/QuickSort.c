@@ -33,11 +33,10 @@ void quickSort(int a[], int low, int high)
 }
 void main()
 {
-    int a[]={5,2,3,1,0};
-    quickSort(a,0,4);
+    int a[] = {5, 2, 3, 1, 0};
+    quickSort(a, 0, 4);
     for (int i = 0; i < 5; i++)
     {
-        printf("%d ",a[i]);
+        printf("%d ", a[i]);
     }
-    
 }
