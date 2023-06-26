@@ -14,11 +14,16 @@ void patternMatch(char *text, char *pattern)
         }
         if (j == M)
         {
-            printf("The pattern is found at index %d", i);
+            printf("The pattern is found at index %d\n", i);
+            break;
         }
     }
 }
 int main()
 {
+    char text[]="ABCAAABCA";
+    char pattern[]="CA";
+
+    patternMatch(text,pattern);
     
 }
