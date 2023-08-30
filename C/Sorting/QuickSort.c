@@ -1,26 +1,22 @@
 #include <stdio.h>
-void quickSort(int a[], int low, int high)
+int partition(int a[], int low, int high)
 {
-    if (low >= high)
-    {
-        return;
-    }
-    int start = low;
+    int pivot = a[low];
+    int start = low + 1;
     int end = high;
-    int mid = start + (end - start) / 2;
-    int pivot = a[mid];
-    while (start <= end)
+    int done = 0;
+    while (start<=end)
     {
-        while (a[start] < pivot)
+        while (start <= end && a[start] < pivot)
         {
             start++;
         }
-        while (a[end] > pivot)
+        while (start <= end && a[end] > pivot)
         {
             end--;
         }
         if (start <= end)
-        {
+        { 
             int temp = a[start];
             a[start] = a[end];
             a[end] = temp;
@@ -28,14 +24,32 @@ void quickSort(int a[], int low, int high)
             end--;
         }
     }
-    quickSort(a, low, end);
-    quickSort(a, start, high);
+    int temp = a[low];
+    a[low] = a[end];
+    a[end] = temp;
+    return end;
 }
-void main()
+void quick_sort(int a[], int low, int high)
 {
-    int a[] = {5, 2, 3, 1, 0};
-    quickSort(a, 0, 4);
-    for (int i = 0; i < 5; i++)
+    if (low < high)
+    {
+        int pivot_index = partition(a, low, high);
+        quick_sort(a, low, pivot_index);
+        quick_sort(a, pivot_index + 1, high);
+    }
+}
+
+int main()
+{
+    int a[] = {6, 5, 4, 3, 2, 1};
+    int n = 6;
+    for (int i = 0; i < n; i++)
+    {
+        printf("%d ", a[i]);
+    }
+    quick_sort(a, 0, n - 1);
+    printf("\n");
+    for (int i = 0; i < n; i++)
     {
         printf("%d ", a[i]);
     }
