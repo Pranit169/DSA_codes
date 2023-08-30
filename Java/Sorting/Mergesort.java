@@ -62,7 +62,6 @@ public class Mergesort {
         while (j < n2) {
             a[start++] = a2[j++];
         }
-
     }
 
     static void mergeSort(int[] a, int start, int end) {
@@ -78,6 +77,4 @@ public class Mergesort {
         // To merge the sorted elements
         merge(a, start, end);
     }
-
-    
 }
