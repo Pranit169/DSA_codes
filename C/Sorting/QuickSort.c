@@ -1,17 +1,20 @@
 #include <stdio.h>
-int partition(int a[], int low, int high)
+void quickSort(int a[], int low, int high)
 {
-    int pivot = a[low];
-    int start = low + 1;
-    int end = high;
-    int done = 0;
+    if(low>=high){
+        return;
+    }
+    int start=low;
+    int end=high;
+    int m=s+(e-s)/2;
+    int pivot=a[m];
     while (start<=end)
     {
-        while (start <= end && a[start] < pivot)
+        while (a[start] < pivot)
         {
             start++;
         }
-        while (start <= end && a[end] > pivot)
+        while ( a[end] > pivot)
         {
             end--;
         }
@@ -24,19 +27,8 @@ int partition(int a[], int low, int high)
             end--;
         }
     }
-    int temp = a[low];
-    a[low] = a[end];
-    a[end] = temp;
-    return end;
-}
-void quick_sort(int a[], int low, int high)
-{
-    if (low < high)
-    {
-        int pivot_index = partition(a, low, high);
-        quick_sort(a, low, pivot_index);
-        quick_sort(a, pivot_index + 1, high);
-    }
+    quickSort(a, low,start);
+    quickSort(a,end,high);
 }
 
 int main()
